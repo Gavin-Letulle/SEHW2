@@ -2,5 +2,22 @@
 <html>
   <head>
     <title><%= title %></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
+  <header class = "heading"><%= title %></header>
+  <header>
+    <div class="link-row">
+      <div class="link-item">
+        <a href="/" class="<%= currentPage === 'home' ? 'active' : '' %>">Home</a>
+      </div>
+      <div class="link-item">
+        <a href="/recipes" class="<%= currentPage === 'recipes' ? 'active' : '' %>">Recipes</a>
+      </div>
+      <div class="link-item">
+        <a href="/enterrecipe" class="<%= currentPage === 'enterrecipe' ? 'active' : '' %>">Enter A Recipe</a>
+      </div>
+    </div>
+  </header>
+  <body>
+    <main class = "content">

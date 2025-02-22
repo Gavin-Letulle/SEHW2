@@ -1,11 +1,26 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
-  </body>
-</html>
+<%- include('./partials/header', { currentPage: 'home'}) %>
+<h1 style="text-align: center; margin-top: 35px">Hello, Welcome to the Recipe Home Page!</h1>
+<div style="float: left">
+  <h3 style="padding-left: 20px">Some of My Favorite Things to Eat Are:</h3>
+  <ul>
+    <li>
+      <p>Sushi</p>
+      <img src="/images/sushi.jpg" alt="Sushi">
+    </li>
+    <li>
+      <p>Pizza</p>
+      <img src="/images/pizza.jpg" alt="Pizza">
+    </li>
+    <li>
+      <p>Wings</p>
+      <img src="/images/wings.jpg" alt="Wings">
+    </li>
+  </ul>
+</div>
+<div style="float: left; text-align: center">
+  <h3>My Cooking Experience:</h3>
+  <p>I have not cooked much food in my life. I like to cook eggs in different ways for breakfast and I also enjoy baking things. <br>
+      However, my dad is an amazing cook and I would like to learn more about cooking from him.</p>
+  <button id="recipeButton" style="margin-top: 30px">Go To Recipes</button>
+</div>
+<%- include('./partials/footer') %>
