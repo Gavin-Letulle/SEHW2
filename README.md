@@ -7,6 +7,7 @@
 - MySQL Workbench
 
 2. Clone the Project
+- Run "git clone https://github.com/Gavin-Letulle/SEHW2" in the terminal
 
 3. Set Up the Database:
 - Open MySQL Workbench and connect to your MySQL server.
