@@ -6,10 +6,8 @@ const db = require("../database/connection");
 router.get('/:id', async (req, res) => {
     const recipeId = req.params.id;
 
-    // Query to get the recipe details
     const recipeQuery = 'SELECT * FROM recipes WHERE recipe_id = ?';
 
-    // Query to get the ingredients and their quantities
     const ingredientsQuery = `
         SELECT i.*, ri.quantity 
         FROM recipe_ingredients ri
@@ -17,7 +15,6 @@ router.get('/:id', async (req, res) => {
         WHERE ri.recipe_id = ?`;
 
     try {
-        // Fetch recipe
         db.query(recipeQuery, [recipeId], (err, recipeResults) => {
             if (err) throw err;
 
@@ -27,7 +24,6 @@ router.get('/:id', async (req, res) => {
 
             const recipe = recipeResults[0];
 
-            // Fetch ingredients for the recipe
             db.query(ingredientsQuery, [recipeId], (err, ingredientResults) => {
                 if (err) throw err;
 
