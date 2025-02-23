@@ -1,6 +1,37 @@
-<%- include('./partials/header', { currentPage: 'recipes'}) %>
-<body>
-  <h1><%= title %></h1>
-  <p></p>
-</body>
-</html>
+<%- include('./partials/header', { currentPage: 'recipes' }) %>
+<h1 style="text-align: center; margin-top: 35px">Recipe List</h1>
+
+<% const proteinTypes = ['Chicken', 'Beef', 'Tofu', 'Grains']; %>
+
+<% proteinTypes.forEach((type) => { %>
+  <h2 style="text-align: center; margin-top: 20px;"><%= type %> Recipes</h2>
+  <table border="1" width="100%" style="margin-bottom: 30px; text-align: center; table-layout: fixed;">
+    <colgroup>
+      <col style="width: 50%;">
+      <col style="width: 50%;">
+    </colgroup>
+    <thead>
+      <tr>
+        <th>Recipe Name</th>
+        <th>Image</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% recipes.filter(recipe => recipe.protein_type === type).forEach((recipe) => { %>
+        <tr>
+          <td><%= recipe.recipe_name %></td>
+          <td style="text-align: center;">
+            <a href="/recipe/<%= recipe.recipe_id %>">
+                <img src="<%= recipe.img_url %>" alt="<%= recipe.recipe_name %>" style="width: 150px; display: block; margin: 0 auto;">
+              </a>
+          </td>
+        </tr>
+      <% }); %>
+    </tbody>
+  </table>
+<% }); %>
+
+<div style="text-align: center">
+  <button id="addRecipeButton">Add A Recipe</button>
+</div>
+<%- include('./partials/footer') %>

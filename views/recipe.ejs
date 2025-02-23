@@ -1,0 +1,51 @@
+<%- include('./partials/header', { currentPage: 'recipe' }) %>
+
+<h1 style="text-align: center; margin-top: 35px"><%= recipe.recipe_name %></h1>
+
+<div style="text-align: center;">
+  <img src="<%= recipe.img_url %>" alt="<%= recipe.recipe_name %>" style="width: 300px; margin-bottom: 20px;">
+  <p><strong>Cooking Time:</strong> <%= recipe.cooking_time %> minutes</p>
+  <h2>Instructions:</h2>
+  <p><%= recipe.instructions %></p>
+</div>
+
+<h2 style="text-align: center;">Ingredients</h2>
+<ul style="list-style-type: none; text-align: center; padding: 0;">
+  <% ingredients.forEach((ingredient) => { %>
+    <li style="display: inline-block; margin: 10px; position: relative;">
+      <span class="ingredient" data-info="<%= ingredient.highlight_info %>">
+        <%= ingredient.ingredient_name %> - <%= ingredient.quantity %>
+      </span>
+    </li>
+  <% }); %>
+</ul>
+
+<a href="/recipes" style="display: block; text-align: center; margin-top: 20px;">Back to Recipes</a>
+
+<script>
+  document.querySelectorAll('.ingredient').forEach(item => {
+    item.addEventListener('mouseover', (e) => {
+      const info = e.target.getAttribute('data-info');
+      const tooltip = document.createElement('div');
+      tooltip.className = 'tooltip';
+      tooltip.style.position = 'absolute';
+      tooltip.style.backgroundColor = '#fff';
+      tooltip.style.border = '1px solid #ccc';
+      tooltip.style.padding = '5px';
+      tooltip.style.zIndex = '1000';
+      tooltip.innerText = info;
+
+      document.body.appendChild(tooltip);
+
+      const rect = e.target.getBoundingClientRect();
+      tooltip.style.left = `${rect.left + window.scrollX}px`;
+      tooltip.style.top = `${rect.bottom + window.scrollY + 5}px`;
+
+      e.target.addEventListener('mouseout', () => {
+        tooltip.remove();
+      }, { once: true });
+    });
+  });
+</script>
+
+<%- include('./partials/footer') %>
