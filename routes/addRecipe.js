@@ -11,11 +11,9 @@ router.get('/', (req, res) => {
     });
   });
   
-  // Route to handle form submission
-  router.post('/addRecipe', (req, res) => {
+  router.post('/', (req, res) => {
     const { recipe_name, protein_type, instructions, cooking_time, img_url, ingredient_ids, quantities } = req.body;
   
-    // Insert into recipes table
     const insertRecipeQuery = `
       INSERT INTO recipes (recipe_name, protein_type, instructions, cooking_time, img_url) 
       VALUES (?, ?, ?, ?, ?)`;
@@ -25,7 +23,6 @@ router.get('/', (req, res) => {
   
       const newRecipeId = result.insertId;
   
-      // Prepare data for recipe_ingredients table
       const recipeIngredientsData = ingredient_ids.map((ingredient_id, index) => [
         newRecipeId,
         ingredient_id,
@@ -38,7 +35,7 @@ router.get('/', (req, res) => {
       db.query(insertRecipeIngredientsQuery, [recipeIngredientsData], (err) => {
         if (err) throw err;
   
-        res.redirect(`/recipe/${newRecipeId}`);  // Redirect to the new recipe page
+        res.redirect(`/recipe/${newRecipeId}`);
       });
     });
   });
