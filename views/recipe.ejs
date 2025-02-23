@@ -1,16 +1,12 @@
 <%- include('./partials/header', { currentPage: 'recipe' }) %>
-
 <h1 style="text-align: center; margin-top: 35px"><%= recipe.recipe_name %></h1>
-
 <div style="display: flex; flex-direction: column; align-items: center; text-align: center;">
   <img src="<%= recipe.img_url %>" alt="<%= recipe.recipe_name %>" style="width: 300px; margin-bottom: 20px;">
   <p><strong>Cooking Time:</strong> <%= recipe.cooking_time %></p>
   <h2>Instructions:</h2>
   <p><%= recipe.instructions %></p>
 </div>
-
-<h2 style="text-align: center;">Ingredients</h2>
-
+<h2 style="text-align: center;">Ingredients:</h2>
 <table style="margin: 0 auto; border-collapse: collapse; width: 50%;">
   <thead>
     <tr>
@@ -34,7 +30,5 @@
     <% }); %>
   </tbody>
 </table>
-
 <button id="recipesButton" style="display: block; margin: 30px auto; padding: 10px 20px; cursor: pointer;">Back To Recipes</button>
-
 <%- include('./partials/footer') %>

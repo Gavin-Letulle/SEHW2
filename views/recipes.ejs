@@ -1,8 +1,7 @@
 <%- include('./partials/header', { currentPage: 'recipes' }) %>
 <h1 style="text-align: center; margin-top: 35px">Recipe List</h1>
-
+<h4 style="text-align: center; margin-top: 20px; margin-bottom: 30px">(Click on an image to view its recipe!)</h4>
 <% const proteinTypes = ['Chicken', 'Beef', 'Tofu', 'Grains']; %>
-
 <% proteinTypes.forEach((type) => { %>
   <h2 style="text-align: center; margin-top: 20px;"><%= type %> Recipes</h2>
   <table border="1" width="100%" style="margin-bottom: 30px; text-align: center; table-layout: fixed;">
@@ -30,7 +29,6 @@
     </tbody>
   </table>
 <% }); %>
-
 <div style="text-align: center">
   <button id="addRecipeButton">Add A Recipe</button>
 </div>
